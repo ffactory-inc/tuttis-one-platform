@@ -19,7 +19,7 @@ jobs:
           publishDeployment: 2674
   sonarcloud:
     name: QualityScan
-    needs: SecurityScan
+    needs: semgrep
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
