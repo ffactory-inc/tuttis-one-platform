@@ -6,8 +6,20 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+  semgrep:
+    name: SecurityScan
+    runs-on: ubuntu-latest
+    if: (github.actor != 'dependabot[bot]')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: returntocorp/semgrep-action@v1
+        with:
+          auditOn: push
+          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
+          publishDeployment: 2674
   sonarcloud:
-    name: SonarCloud
+    name: QualityScan
+    needs: SecurityScan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
