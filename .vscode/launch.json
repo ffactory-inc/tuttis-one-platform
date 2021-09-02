@@ -16,13 +16,14 @@
       "name": "debug test",
       "type": "node",
       "request": "launch",
-      "args": ["test", "--runInBand", "--watchAll=false"],
-      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",
+      "args": ["test", "--runInBand", "--no-cache", "--watchAll=false"],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "disableOptimisticBPs": true,
-      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/react-scripts",
-      "protocol": "inspector"
+      "env": { "CI": "true" },
+      "disableOptimisticBPs": true
     }
   ]
 }
