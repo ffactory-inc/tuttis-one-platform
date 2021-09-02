@@ -20,7 +20,7 @@
     "editor.formatOnSave": true,
     "sonarlint.connectedMode.connections.sonarcloud": [
       {
-        "organizationKey": "<organizationKey>",
+        "organizationKey": "ffactory-do",
         "token": "<token>"
       }
     ]
