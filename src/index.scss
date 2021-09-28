@@ -1,13 +1,10 @@
-/* bring in normalize.css styles */
-@import-normalize;
+@import './application/assets/styles/theme.scss';
 
-
-// Override default variables before the import
-$body-bg: #adb5bd;
-
-$theme-colors: (
-  "primary": #ff4136
-);
-
-// Import Bootstrap and its default variables
-@import '~bootstrap/scss/bootstrap.scss';
+html {
+  height: 100%;
+  display: flex;
+}
+body {
+  width: 100%;
+  margin: auto;
+}

@@ -3,5 +3,9 @@
     "connectionId": "SonarCloud",
     "projectKey": "ffactory-do_tuttis-one-platform"
   },
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true
 }

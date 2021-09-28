@@ -1,3 +1,4 @@
+
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.191.1/containers/javascript-node/.devcontainer/base.Dockerfile
 
 # [Choice] Node.js version: 16, 14, 12
@@ -9,7 +10,8 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends default-jre default-jdk bash-completion
+    && apt-get -y install --no-install-recommends default-jre default-jdk bash-completion \
+    && apt-get -y install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
     
 # [Optional] Uncomment if you want to install an additional version of node using nvm
 # ARG EXTRA_NODE_VERSION=10
