@@ -1,9 +1,2 @@
-// action types
-export const SET_LOADER = 'SET_LOADER';
-
-// action creators
-export const setLoader = ({ isLoader, feature }: any) => ({
-  type: `${feature} ${SET_LOADER}`,
-  payload: isLoader,
-  meta: { feature },
-});
+import { action, withOptionalPayload } from '../../../utilities';
+export const setLoader = action('SET_LOADER', withOptionalPayload());

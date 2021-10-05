@@ -1,19 +1,8 @@
-import * as actions from './actions/router.actions';
+import * as actions from './actions';
+import { AppNotification } from '../../../types';
 
 export type AppAction = ReturnType<ValueOf<typeof actions>>;
-
-export type StateApp = {
-  router: RouterState;
+export type AppState = {
+  loading: boolean;
+  notifications: AppNotification[];
 };
-
-export type RouterState = {
-  defaultRedirectPath: string;
-  redirectPath: string;
-  previousPath: string;
-  preventRedirect: boolean;
-  checkRedirectAfterLogin: boolean;
-};
-
-export type Invitation = {
-  email: string;
-} | null;

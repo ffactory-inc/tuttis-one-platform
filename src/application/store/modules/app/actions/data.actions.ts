@@ -1,6 +1,3 @@
-const DATA_NORMALIZED = 'DATA_NORMALIZED';
+import { action, withOptionalPayload } from '../../../utilities';
 
-export const dataNormalized = ({ feature }: any) => ({
-  type: `${feature} ${DATA_NORMALIZED}`,
-  meta: { feature }
-});
+export const dataNormalized = action('DATA_NORMALIZED', withOptionalPayload());

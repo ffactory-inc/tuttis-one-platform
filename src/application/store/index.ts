@@ -1,12 +1,14 @@
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createTracker } from 'redux-segment';
+import history from '../history';
 
-import rootReducer from './reducers';
+import { modulesMiddleware, appMiddleware, rootReducer } from './modules';
 
 const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
-const tracker = createTracker();
 
-const index = createStore(rootReducer, composeEnhancers(applyMiddleware(tracker)));
+const appStore = createStore(
+  rootReducer(history),
+  composeEnhancers(applyMiddleware(...modulesMiddleware, ...appMiddleware)),
+);
 
-export default index;
+export default appStore;

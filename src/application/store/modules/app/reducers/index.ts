@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-
-import router from './router';
+import { loading } from './ui';
+// import { notifications } from './notification';
 
 export default combineReducers({
-  router,
+  loading,
+  // notifications,
 });

@@ -1,44 +1,28 @@
 import { Middleware } from 'redux';
+import { fetchTaskList, setError, setTaskList } from '../actions';
+import { apiFail, apiRequest, apiSuccess } from '../../app/actions/api.actions';
+import { TaskRepository } from '../../../../services/repositories/TaskRepository';
 
-import {
-  GROUPS,
-  FETCH_GROUPS,
-  SELECT_GROUP,
-  setGroups,
-  setSelectedGroup,
-  setError,
-} from '../../actions/groups.actions';
-import { API_ERROR, API_SUCCESS, apiRequest } from '../../actions/api.actions';
-import { setLoader } from '../../actions/ui.actions';
-import { setNotification } from '../../actions/notification.actions';
-
-export const groupMiddleware: Middleware = () => (next) => (action) => {
+export const taskMiddleware: Middleware = () => (next) => (action) => {
   next(action);
   switch (action.type) {
-    case FETCH_GROUPS:
-      next([
+    case fetchTaskList.type:
+      next(
         apiRequest({
           queryOptions: action.payload,
-          service: 'groupService',
-          method: 'getGroupsAndUsers',
-          feature: GROUPS,
+          serviceMethod: new TaskRepository().list,
+          meta: {
+            module: 'TASK',
+          },
         }),
-        setLoader({ isLoader: true, feature: GROUPS }),
-      ]);
+      );
       break;
-    case SELECT_GROUP:
-      next(setSelectedGroup({ selectedGroup: action.payload }));
-      break;
-    case `${GROUPS} ${API_SUCCESS}`:
-      next(setGroups({ groups: action.payload }));
+    case `TASK ${apiSuccess.type}`:
+      next(setTaskList(action.payload));
       break;
 
-    case `${GROUPS} ${API_ERROR}`:
-      next([
-        setNotification({ message: action.payload.message, feature: GROUPS }),
-        setError({ error: action.payload }),
-        setLoader({ isLoader: false, feature: GROUPS }),
-      ]);
+    case `TASK ${apiFail.type}`:
+      next(setError());
       break;
     default:
       break;

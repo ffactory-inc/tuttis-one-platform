@@ -1,16 +1,9 @@
-import { ItemList } from '../types/main';
-import { Item } from '../types/items';
-import rootReducer from './reducers';
+import { rootReducer } from './modules';
 
 export type Reducer<State, Action, Key extends keyof State> = (
   state: State[Key] | undefined,
   action: Action,
 ) => State[Key];
-
-export interface Fail {
-  message: string;
-  code?: number;
-}
 
 export interface Loadable<T> {
   data: T | null;
@@ -20,9 +13,4 @@ export interface Loadable<T> {
   refresh?: boolean; // refresh data by SSE
 }
 
-export interface ItemState<T extends Item> {
-  list: Loadable<ItemList<T>>;
-  selected: Loadable<T>;
-}
-
-export type AppState = ReturnType<ReturnType<typeof rootReducer>>;
+export type ApplicationState = ReturnType<ReturnType<typeof rootReducer>>;

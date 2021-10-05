@@ -1,25 +1,9 @@
-import { withPayload, actionCreator } from 'application/store/utilities';
-import { ItemList, Lead, ListParams, UIError } from 'application/types';
-import { API_REQUEST } from './constants';
+import { action, withPayload } from '../../../utilities';
+import { ApiErrorPayload, ApiRequestPayload, ApiSuccessPayload, ItemList } from '../../../../types';
 
-// action creators
-export const fetchLeads = actionCreator(API_REQUEST, withPayload<ListParams>(LEADS));
-export const selectLead = actionCreator(SELECT_LEAD, withPayload<ListParams>(LEADS));
-
-export const apiRequest = ({ body, queryOptions, service, method, methodArguments, feature }: any) => ({
-  type: `${feature} ${API_REQUEST}`,
-  payload: body,
-  meta: { method, feature, service, queryOptions, methodArguments }
-});
-
-export const apiSuccess = ({ data, feature }: any) => ({
-  type: `${feature} ${API_SUCCESS}`,
-  payload: data,
-  meta: { feature }
-});
-
-export const apiError = ({ error, feature }: any) => ({
-  type: `${feature} ${API_ERROR}`,
-  payload: error,
-  meta: { feature }
-});
+export const apiRequest = action('API_REQUEST', withPayload<ApiRequestPayload<any>>());
+export const apiSuccess = action(
+  'API_SUCCESS',
+  withPayload<ItemList<any> | ApiSuccessPayload<any>>(),
+);
+export const apiFail = action('API_FAIL', withPayload<ApiErrorPayload>());

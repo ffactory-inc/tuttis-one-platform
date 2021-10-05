@@ -1,3 +1,5 @@
+import { Item, ItemList } from '../types';
+
 type ActionCreator<T extends string, C extends (...args: never[]) => any> = {
   (...args: Parameters<C>): ReturnType<C> & {
     type: T;
@@ -32,3 +34,11 @@ export const action = <T extends string, C extends (...args: never[]) => any>(
 
   return typedCreator;
 };
+
+export const stripItems = <T extends Item>({
+  items,
+  ...itemListMeta
+}: ItemList<T>): ItemList<T> => ({
+  ...itemListMeta,
+  items: [],
+});

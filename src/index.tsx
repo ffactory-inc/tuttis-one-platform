@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import appStore from './application/store';
+import history from './application/history';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={appStore}>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

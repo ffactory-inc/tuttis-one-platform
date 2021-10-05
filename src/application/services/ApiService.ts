@@ -1,8 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
-import { service } from '../decorators/service';
-
-import { DataSource } from './types/DataSource';
+import { DataSource } from './types';
 
 type Headers = {
   Authorization?: string;
@@ -16,7 +14,6 @@ type Config = AxiosRequestConfig & {
   params?: Params;
 };
 
-@service
 export class ApiService implements DataSource {
   private config;
   private axios;
