@@ -2,6 +2,7 @@
   "name": "tuttis-one-platform",
   "version": "0.1.0",
   "private": true,
+  "types": "build/index.d.ts",
   "dependencies": {
     "axios": "^0.21.4",
     "bootstrap": "5.1.1",

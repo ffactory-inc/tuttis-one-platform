@@ -28,7 +28,7 @@
   },
   "include": [
     "src",
-    "main.d.ts"
+    "index.d.ts"
   ],
   "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"]
 }

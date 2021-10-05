@@ -1,5 +1,3 @@
-import { Item } from '../../types';
-
 export interface DataSource {
   get<T>(uri: string, params?: Record<string, string | number>): Promise<T>;
   create<Model>(
